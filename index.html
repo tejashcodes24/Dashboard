@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yourland Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes ripple {
+            to {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="Home/Agriculture-removebg-preview.png" alt="Logo" class="logo-icon">
+                <span>CropWise</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item">Home</a>
+                <a href="#" class="nav-item">Input Parameters</a>
+                <a href="#" class="nav-item active">Dashboard</a>
+            </nav>
+
+            <div class="new-feature">
+                <div class="feature-card">
+                    <span>New!</span>
+                    <p>Ready to contact real farmers near?</p>
+                    <img src="https://placehold.co/60x60" alt="Feature" class="feature-icon">
+                </div>
+            </div>
+
+            <button class="logout">Logout →</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+<h3 class="title">Recommended Crops</h3>
+<div class="grid-container">
+  <div class="crop-card">
+    <div class="image" style="background-image: url('https://cdn.usegalileo.ai/stability/71b0282f-ff0d-4252-8fa5-025f2145208d.png');"></div>
+    <div>
+      <p class="crop-name">Rice</p>
+    </div>
+  </div>
+  <div class="crop-card">
+    <div class="image" style="background-image: url('https://cdn.usegalileo.ai/stability/79f532cf-b9a9-4d23-a795-94a9f395f5ba.png');"></div>
+    <div>
+      <p class="crop-name">Corn</p>
+    </div>
+  </div>
+  <div class="crop-card">
+    <div class="image" style="background-image: url('https://cdn.usegalileo.ai/sdxl10/707a5c53-85a3-47b7-8dcb-e883f07b5499.png');"></div>
+    <div>
+      <p class="crop-name">Wheat</p>
+    </div>
+  </div>
+</div>
+
+            </section>
+
+            <div class="dashboard-grid">
+                <section class="analysis-section">
+                    <h3>Predictive analysis</h3>
+                    <canvas id="analysisChart"></canvas>
+                </section>
+
+                <section class="spraying-section">
+                    <h3>It's the perfect day for spraying</h3>
+                    <div class="metrics">
+                        <div class="metric">
+                            <span>4,39°C</span>
+                            <p>real-time soil temperature</p>
+                        </div>
+                        <div class="metric">
+                            <span>pH7</span>
+                            <p>real-time soil pH</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="environmental-metrics">
+                    <div class="env-metric">
+                        <img src="https://placehold.co/32x32" alt="Air">
+                        <div>
+                            <span>Air quality</span>
+                            <p>95%</p>
+                        </div>
+                    </div>
+                    <div class="env-metric">
+                        <img src="https://placehold.co/32x32" alt="Soil">
+                        <div>
+                            <span>Soil Moisture</span>
+                            <p>21%</p>
+                        </div>
+                    </div>
+                    <div class="env-metric">
+                        <img src="https://placehold.co/32x32" alt="Land">
+                        <div>
+                            <span>Land Fertility</span>
+                            <p>95%</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Weather Sidebar -->
+        <aside class="weather-sidebar">
+            <div class="weather-card">
+                <h1>Sydney</h1>
+                <p>Thursday 10 May 2020</p>
+                <div class="cloud-icon">☁️</div>
+                <div class="temperature">24°</div>
+                <p class="description">Cloudy</p>
+        </aside>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
