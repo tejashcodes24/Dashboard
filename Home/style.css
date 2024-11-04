@@ -181,7 +181,7 @@ body {
   
   .hero-image {
     flex: 4;
-    background-image: url("https://cdn.usegalileo.ai/sdxl10/e0490ca2-ce4b-4f40-bca9-4784ccad0b18.png");
+    background-image: url("Background.png");
     background-size: cover;
     background-position: center;
     aspect-ratio: 16 / 9;
