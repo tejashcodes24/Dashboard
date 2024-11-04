@@ -124,3 +124,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Fetch weather data based on user's location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+        alert("Geolocation is not supported by your browser.");
+    }
+
+    function success(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        const apiKey = "f8ba931a56d6ea5d2ae125abe4a5b92a";
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const location = data.name;
+                const temperature = Math.round(data.main.temp);
+                const description = data.weather[0].description;
+                const iconCode = data.weather[0].icon;
+                const date = new Date().toLocaleDateString("en-US", {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                });
+
+                // Update HTML content
+                document.getElementById('location').textContent = location;
+                document.getElementById('temperature').textContent = `${temperature}°C`;
+                document.getElementById('description').textContent = description.charAt(0).toUpperCase() + description.slice(1);
+                document.getElementById('date').textContent = date;
+                document.getElementById('weather-icon').innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="Weather icon">`;
+            })
+            .catch(error => console.error("Error fetching weather data:", error));
+    }
+
+    function error() {
+        alert("Unable to retrieve your location.");
+    }
+});
+

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yourland Dashboard</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <style>
         @keyframes ripple {
@@ -75,36 +75,57 @@
                 <section class="spraying-section">
                     <h3>It's the perfect day for spraying</h3>
                     <div class="metrics">
-                        <div class="metric">
-                            <span>4,39°C</span>
-                            <p>real-time soil temperature</p>
-                        </div>
-                        <div class="metric">
-                            <span>pH7</span>
-                            <p>real-time soil pH</p>
+                        <img src="crop.jpeg" alt="Soil image" class="metric-image">
+                        <div class="metric-container">
+                            <div class="metric">
+                                <span>4.39°C</span>
+                                <p>real-time soil temperature</p>
+                            </div>
+                            <div class="metric">
+                                <span>pH  7</span>
+                                <p>real-time soil pH</p>
+                            </div>
                         </div>
                     </div>
                 </section>
+                
+                
 
                 <section class="environmental-metrics">
                     <div class="env-metric">
-                        <img src="https://placehold.co/32x32" alt="Air">
+                        <img src="Nitrogen-removebg-preview.png" alt="Air">
                         <div>
-                            <span>Air quality</span>
+                            <span>Nitrogen</span>
                             <p>95%</p>
                         </div>
                     </div>
                     <div class="env-metric">
-                        <img src="https://placehold.co/32x32" alt="Soil">
+                        <img src="phosphorus-final.png" alt="Soil">
                         <div>
-                            <span>Soil Moisture</span>
+                            <span>Phosphorus</span>
                             <p>21%</p>
                         </div>
                     </div>
                     <div class="env-metric">
-                        <img src="https://placehold.co/32x32" alt="Land">
+                        <img src="potassium-removebg-preview.png" alt="Land">
                         <div>
-                            <span>Land Fertility</span>
+                            <span>Potassium</span>
+                            <p>95%</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="environmental-metrics">
+                    <div class="env-metric">
+                        <img src="phosphorus-final.png" alt="Soil">
+                        <div>
+                            <span>Phosphorus</span>
+                            <p>21%</p>
+                        </div>
+                    </div>
+                    <div class="env-metric">
+                        <img src="potassium-removebg-preview.png" alt="Land">
+                        <div>
+                            <span>Potassium</span>
                             <p>95%</p>
                         </div>
                     </div>
@@ -113,14 +134,15 @@
         </main>
 
         <!-- Weather Sidebar -->
-        <aside class="weather-sidebar">
+        <div class="weather-sidebar">
             <div class="weather-card">
-                <h1>Sydney</h1>
-                <p>Thursday 10 May 2020</p>
-                <div class="cloud-icon">☁️</div>
-                <div class="temperature">24°</div>
-                <p class="description">Cloudy</p>
-        </aside>
+                <h1 id="location">Loading...</h1>
+                <p id="date">-</p>
+                <div class="cloud-icon" id="weather-icon">☁️</div>
+                <div class="temperature" id="temperature">--°</div>
+                <p class="description" id="description">-</p>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
