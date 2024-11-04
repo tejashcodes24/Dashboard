@@ -201,6 +201,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
+    margin-top: 50px;
 }
 
 
@@ -229,7 +230,7 @@ body {
 
 .metric-image {
     width: 250px; /* Adjust as needed */
-    height: 250px;
+    height: 300px;
     border-radius: calc(var(--border-radius) - 4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
@@ -270,7 +271,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
-    margin-top: 0.5rem;
+    margin-top: 70px;
 }
 
 .env-metric {
@@ -303,6 +304,74 @@ body {
     font-weight: 600;
     color: var(--primary-color);
 }
+
+.environmental-metrics1 {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4.25rem;
+    margin-top: 0.5rem;
+    margin-left: 120px;
+}
+
+.env-metric1 {
+    background-color: #e6f7ff;
+    padding: 1.5rem;
+    width: 300px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.env-metric1:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.env-metric1 img {
+    width: 90px;
+    height: 90px;
+}
+
+.env-metric1 span {
+    font-weight: 500;
+    color: #666;
+}
+
+.env-metric1 p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.environmental-metrics2 {
+    gap: 1.25rem;
+    margin-top: 70px;
+}
+
+.env-metric2 {
+    background-color: #E9FFD3;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.env-metric2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.env-metric2 img {
+    width: 350px;
+    height: 390px;
+    margin-top: 20px;
+}
+
+
 
 /* Weather Sidebar */
 .weather-sidebar {
