@@ -1,37 +1,33 @@
-// Initialize Chart.js with smooth animations
 document.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('analysisChart').getContext('2d');
-    
+    const ctx = document.getElementById('mlChart').getContext('2d');
+
     new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: ['April', 'May', 'June', 'July', 'August', 'September'],
-            datasets: [{
-                label: 'UK carrots',
-                data: [1, 3, 5, 8, 10, 12],
-                borderColor: '#1B4332',
-                backgroundColor: 'rgba(27, 67, 50, 0.1)',
-                tension: 0.4,
-                borderWidth: 3,
-                pointBackgroundColor: '#fff',
-                pointBorderColor: '#1B4332',
-                pointBorderWidth: 2,
-                pointRadius: 4,
-                pointHoverRadius: 6
-            },
-            {
-                label: 'Predicted Growth',
-                data: [2, 4, 6, 9, 11, 13],
-                borderColor: '#90BE6D',
-                backgroundColor: 'rgba(144, 190, 109, 0.1)',
-                tension: 0.4,
-                borderWidth: 3,
-                pointBackgroundColor: '#fff',
-                pointBorderColor: '#90BE6D',
-                pointBorderWidth: 2,
-                pointRadius: 4,
-                pointHoverRadius: 6
-            }]
+            labels: ['Decision Tree', 'Naive Bayes', 'SVM', 'Logistic Regression', 'RF', 'XGBoost'],
+            datasets: [
+                {
+                    label: 'Accuracy',
+                    data: [87.5, 96.59, 95.45, 92.73, 96.59, 96.82],
+                    backgroundColor: [
+                        'rgb(255, 0, 0)',
+                        'rgb(0, 0, 255)',
+                        'rgb(60, 179, 113)',
+                        'rgb(238, 130, 238)',
+                        'rgb(255, 165, 0)',
+                        'rgb(106, 90, 205)'
+                    ],
+                    borderColor: [
+                        'black',
+                        'black',
+                        'black',
+                        'black',
+                        'black',
+                        'black'
+                    ],
+                    borderWidth: 2
+                }
+            ]
         },
         options: {
             responsive: true,
@@ -41,32 +37,63 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             plugins: {
                 legend: {
-                    position: 'bottom',
-                    labels: {
-                        padding: 20,
-                        font: {
-                            size: 12,
-                            weight: '500'
-                        }
+                    display: false
+                },
+                tooltip: {
+                    titleFont: {
+                        weight: '900',
+                        family: "'Plus Jakarta Sans', 'Noto Sans', sans-serif"
+                    },
+                    bodyFont: {
+                        weight: '900',
+                        family: "'Plus Jakarta Sans', 'Noto Sans', sans-serif"
                     }
                 }
             },
             scales: {
                 y: {
                     beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        },
+                        font: {
+                            weight: '900',
+                            family: "'Plus Jakarta Sans', 'Noto Sans', sans-serif"
+                        }
+                    },
                     grid: {
                         color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Accuracy (%)',
+                        font: {
+                            weight: '900',
+                            family: "'Plus Jakarta Sans', 'Noto Sans', sans-serif"
+                        }
                     }
                 },
                 x: {
+                    ticks: {
+                        font: {
+                            weight: '900',
+                            family: "'Plus Jakarta Sans', 'Noto Sans', sans-serif"
+                        }
+                    },
                     grid: {
                         color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    title: {
+                        display: true,
+                        text: 'ML Algorithms',
+                        font: {
+                            weight: '900',
+                            family: "'Plus Jakarta Sans', 'Noto Sans', sans-serif"
+                        }
                     }
                 }
-            },
-            interaction: {
-                intersect: false,
-                mode: 'index'
             }
         }
     });
