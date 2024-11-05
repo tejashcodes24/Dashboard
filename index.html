@@ -65,11 +65,15 @@
 </div>
 
             </section>
+            <div class="weather-container">
+                <h1>Weather Forecast</h1>
+                <div id="weather-cards" class="weather-cards"></div>
+            </div>
 
             <div class="dashboard-grid">
                 <section class="analysis-section">
                     <h3>Predictive analysis</h3>
-                    <canvas id="mlChart" width="300" height="300"></canvas>
+                    <canvas id="mlChart" width="300" height="200"></canvas>
                 </section>
 
                 <section class="spraying-section">
@@ -135,18 +139,6 @@
                 </div>
             </div>
         </main>
-
-        <!-- Weather Sidebar -->
-        <div class="weather-sidebar">
-            <div class="weather-card">
-                <h1 id="location">Loading...</h1>
-                <p id="date">-</p>
-                <div class="cloud-icon" id="weather-icon">☁️</div>
-                <div class="temperature" id="temperature">--°</div>
-                <p class="description" id="description">-</p>
-            </div>
-        </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
 </body>

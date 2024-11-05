@@ -146,7 +146,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #f4efe6;
     padding: 1rem 2.5rem;
   }
   
@@ -155,56 +154,79 @@ body {
     align-items: center;
     gap: 1rem;
   }
-  
-  .header-buttons button {
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    border-radius: 9999px;
-    cursor: pointer;
-  }
-  
-  .sign-up-btn {
-    background-color: #019863;
-    color: #ffffff;
-  }
-  
-  .login-btn {
-    background-color: #f4efe6;
-    color: #1c160c;
-  }
+
   
   /* Hero Section */
-  .hero {
+  .header-buttons {
     display: flex;
-    padding: 1.5rem 6rem;
+    gap: 1rem;
+    justify-content: flex-end; 
+    align-items: center;
+    padding-left: 900px; 
+}
+
+.login-btn, .sign-up-btn {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
+    padding: 0.75rem 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.sign-up-btn:hover, .login-btn:hover {
+    background-color: #019863;
+}
+
+
+  .hero {
+    position: relative;
+    height: 100vh; 
+    width: 100%;
+    overflow: hidden;
   }
   
   .hero-image {
-    flex: 4;
-    background-image: url("Background.png");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2300px;
+    height: 100%;
+    background-image: url('sunset-dusk-meadow-field-c04bf29c77d3e1a2c385d1815d27928b.jpg');
     background-size: cover;
     background-position: center;
-    aspect-ratio: 16 / 9;
-    border-radius: 1rem;
-    width: 150px;
+    z-index: 1;
   }
   
   .hero-text {
-    flex: 2.5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1.5rem;
+    position: relative;
+    z-index: 2; 
+    color: #ffffff;
+    text-align: left;
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
   }
   
   .hero h1 {
-    font-size: 2.5rem;
-    font-weight: 900;
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-left: -240px;
+    margin-top: 120px;
   }
   
   .hero h2 {
-    font-size: 1rem;
-    color: #1c160c;
+    font-size: 1.2rem;
+    color: white; 
+    margin-bottom: 2rem;
+    margin-left: -220px;
+    font-weight: 900;
   }
   
   .learn-more-btn {
@@ -214,8 +236,39 @@ body {
     border-radius: 9999px;
     font-weight: bold;
     cursor: pointer;
+    border: none;
+    margin-left: -220px;
   }
-  
+
+  .our-story {
+    max-width: 1900px;
+    text-align: left;
+    padding: 20px;
+    background-color: white;
+}
+
+.our-story h1 {
+    font-size: 2em;
+    margin-top: 70px;
+    font-weight: bold;
+    margin-left: 80px;
+}
+
+.our-story p {
+    font-size: 1.4em;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #333;
+    margin-left: 700px;
+    margin-top: -90px;
+    width: 400px;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #000;
+}
+
   /* About Section */
   .about {
     padding: 2.5rem;
@@ -234,7 +287,7 @@ body {
   
   .feature {
     flex: 1;
-    border: 1px solid #e9dfce;
+    border: 3px solid #e9dfce;
     padding: 1rem;
     border-radius: 0.75rem;
     margin-top: 15px;
@@ -253,5 +306,6 @@ body {
   .feature p {
     color: #a18249;
     font-size: 0.875rem;
+    font-weight: 500;
   }
   
