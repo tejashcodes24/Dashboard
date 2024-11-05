@@ -150,44 +150,100 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// Replace with your own OpenWeatherMap API key
+const API_KEY = 'f8ba931a56d6ea5d2ae125abe4a5b92a';
+const CITY = 'Jatani';
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Fetch weather data based on user's location
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-        alert("Geolocation is not supported by your browser.");
+async function fetchWeatherData() {
+    const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&appid=${API_KEY}&units=metric`
+    );
+    const data = await response.json();
+    displayWeatherData(data);
+}
+
+function getWeatherIcon(description) {
+    // Define a mapping from weather descriptions to local icon file paths
+    const icons = {
+        'clear sky': 'icons/partly-cloudy-removebg-preview.png',
+        'few clouds': 'icons/partly-cloudy-removebg-preview.png',
+        'scattered clouds': 'icons/cloudy-removebg-preview.png',
+        'broken clouds': 'icons/cloudy-removebg-preview.png',
+        'shower rain': 'icons/rainy.webp',
+        'rain': 'icons/rainy.webp',
+        'thunderstorm': 'icons/thunderstorm.png',
+        'snow': 'icons/cloudy-removebg-preview.png',
+        'mist': 'icons/cloudy-removebg-preview.png',
+        'sunny': 'icons/sunny.png',
+    };
+
+    // Return the corresponding icon or a default icon if no match is found
+    return icons[description] || 'icons/default.png';
+}
+function displayWeatherData(data) {
+    const weatherCardsContainer = document.getElementById('weather-cards');
+    weatherCardsContainer.innerHTML = ''; // Clear any existing cards
+
+    const currentDate = new Date();
+    
+    // Get the first forecast entry for today
+    const currentDayData = data.list.find(item => {
+        const itemDate = new Date(item.dt * 1000);
+        return itemDate.toDateString() === currentDate.toDateString();
+    });
+
+    if (currentDayData) {
+        const currentTemp = Math.round(currentDayData.main.temp);
+        const currentDescription = currentDayData.weather[0].description;
+        const currentIconPath = getWeatherIcon(currentDescription);
+
+        // Create a card for the current day's weather
+        const currentDayCard = document.createElement('div');
+        currentDayCard.className = 'weather-card';
+        currentDayCard.innerHTML = `
+            <h3>Today</h3>
+            <img src="${currentIconPath}" alt="${currentDescription}">
+            <p>${currentTemp}°C</p>
+        `;
+        weatherCardsContainer.appendChild(currentDayCard);
     }
 
-    function success(position) {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        const apiKey = "f8ba931a56d6ea5d2ae125abe4a5b92a";
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    const dailyData = data.list
+        .filter(item => {
+            const itemDate = new Date(item.dt * 1000);
+            return itemDate < currentDate && item.dt_txt.includes('13:00:00');
+        })
+        .slice(-4); 
 
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                const location = data.name;
-                const temperature = Math.round(data.main.temp);
-                const description = data.weather[0].description;
-                const iconCode = data.weather[0].icon;
-                const date = new Date().toLocaleDateString("en-US", {
-                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-                });
+    // Check if dailyData is populated
+    console.log(data.list);
 
-                // Update HTML content
-                document.getElementById('location').textContent = location;
-                document.getElementById('temperature').textContent = `${temperature}°C`;
-                document.getElementById('description').textContent = description.charAt(0).toUpperCase() + description.slice(1);
-                document.getElementById('date').textContent = date;
-                document.getElementById('weather-icon').innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="Weather icon">`;
-            })
-            .catch(error => console.error("Error fetching weather data:", error));
-    }
+    dailyData.forEach(day => {
+        const date = new Date(day.dt * 1000);
+        const formattedDate = date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
 
-    function error() {
-        alert("Unable to retrieve your location.");
-    }
-});
+        const temp = Math.round(day.main.temp);
+        const description = day.weather[0].description;
 
+        // Get the local icon based on the weather description
+        const iconPath = getWeatherIcon(description);
+
+        const card = document.createElement('div');
+        card.className = 'weather-card';
+        card.innerHTML = `
+            <h3>${formattedDate}</h3>
+            <img src="${iconPath}" alt="${description}">
+            <p>${temp}°C</p>
+        `;
+        weatherCardsContainer.appendChild(card);
+    });
+}
+
+
+
+// Fetch weather data when the page loads
+window.onload = fetchWeatherData;
