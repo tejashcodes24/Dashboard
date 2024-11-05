@@ -209,11 +209,12 @@ function displayWeatherData(data) {
     }
 
     const dailyData = data.list
-        .filter(item => {
-            const itemDate = new Date(item.dt * 1000);
-            return itemDate < currentDate && item.dt_txt.includes('13:00:00');
-        })
-        .slice(-4); 
+    .filter(item => {
+        const itemDate = new Date(item.dt * 1000);
+        return itemDate > currentDate && item.dt_txt.includes('12:00:00');
+    })
+    .slice(1, 5);
+ 
 
     // Check if dailyData is populated
     console.log(data.list);
