@@ -65,11 +65,15 @@
 </div>
 
             </section>
+            <div class="weather-container">
+                <h1>Weather Forecast</h1>
+                <div id="weather-cards" class="weather-cards"></div>
+            </div>
 
             <div class="dashboard-grid">
                 <section class="analysis-section">
                     <h3>Predictive analysis</h3>
-                    <canvas id="analysisChart"></canvas>
+                    <canvas id="mlChart" width="300" height="200"></canvas>
                 </section>
 
                 <section class="spraying-section">
@@ -88,9 +92,6 @@
                         </div>
                     </div>
                 </section>
-                
-                
-
                 <section class="environmental-metrics">
                     <div class="env-metric">
                         <img src="Nitrogen-removebg-preview.png" alt="Air">
@@ -114,36 +115,30 @@
                         </div>
                     </div>
                 </section>
-                <section class="environmental-metrics">
-                    <div class="env-metric">
-                        <img src="phosphorus-final.png" alt="Soil">
+                <section class="environmental-metrics1">
+                    <div class="env-metric1">
+                        <img src="humidity-removebg-preview (1).png" alt="Soil">
                         <div>
-                            <span>Phosphorus</span>
+                            <span>Humidity</span>
                             <p>21%</p>
                         </div>
                     </div>
-                    <div class="env-metric">
-                        <img src="potassium-removebg-preview.png" alt="Land">
+                    <div class="env-metric1">
+                        <img src="Rainfallremovebg-preview.png" alt="Land">
                         <div>
-                            <span>Potassium</span>
+                            <span>Rainfall</span>
                             <p>95%</p>
                         </div>
                     </div>
                 </section>
+                <div class="environmental-metrics2">
+                    <div class="env-metric2">
+                        <h3>Heatmap</h3>
+                        <img src="heatmap-removebg-preview.png" alt="Soil">
+                    </div>
+                </div>
             </div>
         </main>
-
-        <!-- Weather Sidebar -->
-        <div class="weather-sidebar">
-            <div class="weather-card">
-                <h1 id="location">Loading...</h1>
-                <p id="date">-</p>
-                <div class="cloud-icon" id="weather-icon">☁️</div>
-                <div class="temperature" id="temperature">--°</div>
-                <p class="description" id="description">-</p>
-            </div>
-        </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
 </body>
